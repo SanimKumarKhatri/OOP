@@ -30,23 +30,18 @@ public:
     }
    matrix operator *(matrix m)
     {
-       matrix a;
-       int i=0, j=0, k=0;
-       a.mat[i][j]=0;
-    do
-      {
-        do
-        {
-            do
-            {
-                a.mat[i][j] += mat[i][k] * m.mat[k][j];
-                k++;
-            }while(k<=3);
-            j++;
-        }while(j<=3);
-        i++;
-        a.mat[i][j]=0;
-      }while(i<=3);
+      matrix a;
+       for(int i=0;i<3;i++)
+       {
+           for(int j=0;j<3;j++)
+           {
+               a.mat[i][j]=0;
+               for(int k=0;k<3;k++)
+               {
+                   a.mat[i][j]+=mat[i][k]*m.mat[k][j];
+               }
+           }
+       }
 
        return a;
     }
